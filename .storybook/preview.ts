@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from '@storybook/addon-themes';
-import '../src/styles/globals.css';  // This is the correct path
+import '../src/styles/globals.css';
 
 const preview: Preview = {
   parameters: {
@@ -9,6 +9,16 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
+      },
+    },
+    themes: {
+      list: [
+        { name: 'Light', class: '', color: '#fff', default: true },
+        { name: 'Dark', class: 'dark', color: '#000' },
+      ],
+      target: 'body',
+      onChange: (theme) => {
+        document.body.className = theme.class;
       },
     },
   },

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark {
+  color-scheme: dark;
+  --bg-color: theme('colors.gray.900');
+  --text-color: theme('colors.gray.200');
+  --primary-color: theme('colors.blue.500');
+  --secondary-color: theme('colors.blue.400');
+  --accent-color: theme('colors.blue.300');
+  --subtle-color: theme('colors.blue.500/20');
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
