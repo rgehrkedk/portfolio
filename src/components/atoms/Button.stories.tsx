@@ -4,69 +4,50 @@ import { Button } from './Button';
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
   component: Button,
-  args: {
-    children: 'Button',
-  },
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['solid', 'outline', 'ghost'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Solid: Story = {
+export const Primary: Story = {
   args: {
+    children: 'Button',
     variant: 'solid',
   },
 };
 
 export const Outline: Story = {
   args: {
+    children: 'Button',
     variant: 'outline',
   },
 };
 
 export const Ghost: Story = {
   args: {
+    children: 'Button',
     variant: 'ghost',
   },
 };
 
 export const Small: Story = {
   args: {
+    children: 'Button',
     size: 'sm',
   },
 };
 
 export const Medium: Story = {
   args: {
+    children: 'Button',
     size: 'md',
   },
 };
 
 export const Large: Story = {
   args: {
+    children: 'Button',
     size: 'lg',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-};
-
-export const CustomClassName: Story = {
-  args: {
-    className: 'bg-purple-500 hover:bg-purple-600',
-    children: 'Custom Style',
   },
 };
