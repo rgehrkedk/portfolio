@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from '@storybook/addon-themes';
+import path from 'path';  // Add this import
 import '../src/styles/globals.css';
 
 const preview: Preview = {
@@ -11,15 +12,15 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-    themes: {
-      list: [
-        { name: 'Light', class: '', color: '#fff', default: true },
-        { name: 'Dark', class: 'dark', color: '#000' },
-      ],
-      target: 'body',
-      onChange: (theme) => {
-        document.body.className = theme.class;
-      },
+    // Add this to ensure proper paths resolution
+    webpackFinal: async (config) => {
+      if (config.resolve) {
+        config.resolve.alias = {
+          ...config.resolve.alias,
+          '@': path.resolve(__dirname, '../src'),
+        };
+      }
+      return config;
     },
   },
   decorators: [

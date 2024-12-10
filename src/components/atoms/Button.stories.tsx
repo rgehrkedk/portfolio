@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
+import { themes } from '@/theme/themes';
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
@@ -15,6 +16,10 @@ const meta: Meta<typeof Button> = {
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+    },
+    theme: {
+      control: 'select',
+      options: Object.keys(themes),
     },
   },
 };
@@ -40,6 +45,29 @@ export const Ghost: Story = {
   },
 };
 
+// Theme Examples
+export const BlueSolid: Story = {
+  args: {
+    theme: 'blue',
+    variant: 'solid',
+  },
+};
+
+export const PurpleSolid: Story = {
+  args: {
+    theme: 'purple',
+    variant: 'solid',
+  },
+};
+
+export const TealSolid: Story = {
+  args: {
+    theme: 'teal',
+    variant: 'solid',
+  },
+};
+
+// Size Examples remain the same
 export const Small: Story = {
   args: {
     size: 'sm',
@@ -61,12 +89,5 @@ export const Large: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-  },
-};
-
-export const CustomClassName: Story = {
-  args: {
-    className: 'bg-purple-500 hover:bg-purple-600',
-    children: 'Custom Style',
   },
 };

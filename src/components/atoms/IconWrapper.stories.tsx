@@ -1,32 +1,36 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { IconWrapper } from './IconWrapper';
-import { Sun } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { themes } from '@/theme/themes';
 
-const meta: Meta<typeof IconWrapper> = {
-  title: 'Atoms/IconWrapper',
-  component: IconWrapper,
-  tags: ['autodocs'],
-};
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'solid' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  theme?: keyof typeof themes;
+}
 
-export default meta;
-type Story = StoryObj<typeof IconWrapper>;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'solid', size = 'md', theme = 'blue', ...props }, ref) => {
+    const themeColors = themes[theme];
 
-export const Default: Story = {
-  args: {
-    children: <Sun className="w-5 h-5" />,
-  },
-};
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          'rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
+          {
+            [cn(themeColors.primary, 'text-white', themeColors.hover)]: variant === 'solid',
+            [`border-2 border-current text-${theme}-500 hover:bg-${theme}-50`]: variant === 'outline',
+            [`text-${theme}-500 hover:bg-${theme}-50`]: variant === 'ghost',
+            'px-3 py-1 text-sm': size === 'sm',
+            'px-4 py-2': size === 'md',
+            'px-6 py-3 text-lg': size === 'lg',
+          },
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 
-export const DarkMode: Story = {
-  args: {
-    children: <Sun className="w-5 h-5" />,
-    isDarkMode: true,
-  },
-};
-
-export const CustomTheme: Story = {
-  args: {
-    children: <Sun className="w-5 h-5" />,
-    currentTheme: 'purple',
-  },
-};
+Button.displayName = 'Button';
