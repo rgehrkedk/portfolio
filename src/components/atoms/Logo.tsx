@@ -23,9 +23,15 @@ export const Logo = ({ size = 'md', isDarkMode = false }: LogoProps) => {
       <div className="absolute inset-0 opacity-90 mix-blend-overlay">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500 to-purple-500" />
       </div>
-      <span className={`text-lg font-bold relative z-10 ${isDarkMode ? 'text-gray-900' : 'text-white'}`}>
-        A
-      </span>
+      <svg
+        className="relative z-10"
+        width="24" height="24"
+        viewBox="0 0 24 24"
+        fill={isDarkMode ? 'currentColor' : 'white'}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 2L2 22h20L12 2zM12 6.5l4.5 9H7.5l4.5-9z" />
+      </svg>
     </div>
   );
 };
