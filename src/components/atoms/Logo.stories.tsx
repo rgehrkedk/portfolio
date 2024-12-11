@@ -30,6 +30,15 @@ const meta: Meta<typeof Logo> = {
         defaultValue: { summary: 'false' },
       },
     },
+    theme: {
+      control: 'select',
+      options: ['blue', 'purple', 'teal'],
+      description: 'The theme of the logo',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'blue' },
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -47,6 +56,7 @@ export const Default: Story = {
   args: {
     size: 'md',
     isDarkMode: false,
+    theme: 'blue',
   },
   parameters: {
     docs: {
@@ -61,6 +71,7 @@ export const Small: Story = {
   args: {
     size: 'sm',
     isDarkMode: false,
+    theme: 'blue',
   },
   parameters: {
     docs: {
@@ -75,6 +86,7 @@ export const Large: Story = {
   args: {
     size: 'lg',
     isDarkMode: false,
+    theme: 'blue',
   },
   parameters: {
     docs: {
@@ -89,6 +101,7 @@ export const DarkMode: Story = {
   args: {
     size: 'md',
     isDarkMode: true,
+    theme: 'blue',
   },
   parameters: {
     docs: {
