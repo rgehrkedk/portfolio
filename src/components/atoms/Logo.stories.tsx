@@ -31,6 +31,13 @@ const meta: Meta<typeof Logo> = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '3em' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
