@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-interface ThemeCardProps {
+export interface ThemeCardProps {
   theme: string;
   isActive: boolean;
   onClick: () => void;

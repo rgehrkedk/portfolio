@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-interface LogoProps {
+export interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   isDarkMode?: boolean;
 }

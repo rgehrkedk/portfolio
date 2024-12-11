@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils';
+import { themes } from '@/theme/themes';
 
-interface ToggleProps {
+export interface ToggleProps {
   isChecked: boolean;
   onChange: (checked: boolean) => void;
-  currentTheme?: string;
+  currentTheme?: keyof typeof themes;
   isDarkMode?: boolean;
 }
 
@@ -13,12 +14,14 @@ export const Toggle = ({
   currentTheme = 'blue',
   isDarkMode = false
 }: ToggleProps) => {
+  const themeColors = themes[currentTheme];
+
   return (
     <button
       onClick={() => onChange(!isChecked)}
       className={cn(
         'w-11 h-6 rounded-full relative transition-all duration-200',
-        isChecked ? `bg-${currentTheme}-500` : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+        isChecked ? themeColors.primary : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
       )}
     >
       <div
