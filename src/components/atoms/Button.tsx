@@ -17,7 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          'rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'flex items-center space-x-2 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
           {
             [cn(themeColors.primary, 'text-white', themeColors.hover)]: variant === 'solid' && !disabled,
             [`border-2 border-current text-${theme}-500 hover:bg-${theme}-50`]: variant === 'outline' && !disabled,
