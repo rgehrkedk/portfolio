@@ -1,15 +1,16 @@
 import { cn } from '@/lib/utils';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import { themes } from '@/theme/themes';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'solid' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   theme?: keyof typeof themes;
+  icon?: ReactNode; // Added icon prop
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'solid', size = 'md', theme = 'blue', disabled, ...props }, ref) => {
+  ({ className, variant = 'solid', size = 'md', theme = 'blue', disabled, icon, ...props }, ref) => {
     const themeColors = themes[theme];
 
     return (
@@ -24,15 +25,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'px-3 py-1 text-sm': size === 'sm',
             'px-4 py-2': size === 'md',
             'px-6 py-3 text-lg': size === 'lg',
-            'bg-gray-200': disabled && variant === 'solid', // Add background for disabled solid variant
-            'bg-gray-100 border-gray-200': disabled && variant === 'outline', // Add background for disabled outline variant
-            'cursor-not-allowed opacity-50': disabled, // Add disabled styles
+            'bg-gray-200': disabled && variant === 'solid',
+            'bg-gray-100 border-gray-200': disabled && variant === 'outline',
+            'cursor-not-allowed opacity-50': disabled,
           },
           className
         )}
-        disabled={disabled} // Pass the disabled prop to the button
+        disabled={disabled}
         {...props}
-      />
+      >
+        {icon && <span className="icon-class">{icon}</span>} {/* Render icon if provided */}
+        {props.children}
+      </button>
     );
   }
 );
