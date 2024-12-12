@@ -3,6 +3,12 @@ import { Button, ButtonProps } from './Button';
 import { themes } from '@/theme/themes';
 import { Camera, Search, Home } from 'lucide-react'; // Import Lucide icons
 
+const icons = {
+  Camera: <Camera />,
+  Search: <Search />,
+  Home: <Home />,
+};
+
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
   component: Button,
@@ -74,16 +80,13 @@ const meta: Meta<typeof Button> = {
     icon: {
       control: {
         type: 'select',
-        options: [
-          { name: 'Camera', component: <Camera /> },
-          { name: 'Search', component: <Search /> },
-          { name: 'Home', component: <Home /> },
-        ],
+        options: Object.keys(icons),
       },
       description: 'Icon to display inside the button',
       table: {
         type: { summary: 'React.ReactNode' },
       },
+      mapping: icons,
     },
   },
 };
@@ -95,7 +98,7 @@ export const Solid: Story = {
   args: {
     variant: 'solid',
     children: 'Solid Button',
-    icon: <Camera />, // Default icon
+    icon: 'Camera', // Default icon
   },
   parameters: {
     docs: {
@@ -110,7 +113,7 @@ export const Outline: Story = {
   args: {
     variant: 'outline',
     children: 'Outline Button',
-    icon: <Search />, // Default icon
+    icon: 'Search', // Default icon
   },
   parameters: {
     docs: {
@@ -125,7 +128,7 @@ export const Ghost: Story = {
   args: {
     variant: 'ghost',
     children: 'Ghost Button',
-    icon: <Home />, // Default icon
+    icon: 'Home', // Default icon
   },
   parameters: {
     docs: {
@@ -142,7 +145,7 @@ export const BlueSolid: Story = {
     theme: 'blue',
     variant: 'solid',
     children: 'Blue Theme',
-    icon: <Camera />, // Default icon
+    icon: 'Camera', // Default icon
   },
   parameters: {
     docs: {
@@ -158,7 +161,7 @@ export const PurpleSolid: Story = {
     theme: 'purple',
     variant: 'solid',
     children: 'Purple Theme',
-    icon: <Search />, // Default icon
+    icon: 'Search', // Default icon
   },
   parameters: {
     docs: {
@@ -174,7 +177,7 @@ export const TealSolid: Story = {
     theme: 'teal',
     variant: 'solid',
     children: 'Teal Theme',
-    icon: <Home />, // Default icon
+    icon: 'Home', // Default icon
   },
   parameters: {
     docs: {
@@ -190,7 +193,7 @@ export const Small: Story = {
   args: {
     size: 'sm',
     children: 'Small Button',
-    icon: <Camera />, // Default icon
+    icon: 'Camera', // Default icon
   },
   parameters: {
     docs: {
@@ -205,7 +208,7 @@ export const Medium: Story = {
   args: {
     size: 'md',
     children: 'Medium Button',
-    icon: <Search />, // Default icon
+    icon: 'Search', // Default icon
   },
   parameters: {
     docs: {
@@ -220,7 +223,7 @@ export const Large: Story = {
   args: {
     size: 'lg',
     children: 'Large Button',
-    icon: <Home />, // Default icon
+    icon: 'Home', // Default icon
   },
   parameters: {
     docs: {
@@ -235,7 +238,7 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     children: 'Disabled Button',
-    icon: <Camera />, // Default icon
+    icon: 'Camera', // Default icon
   },
   parameters: {
     docs: {
